@@ -67,3 +67,14 @@ input:checked+span {
     color: #333 !important;
     /* Dark text color */
 }
+
+
+.editBox {
+    position: fixed;
+    width: 100%;
+    padding: 10px;
+    top: 30%;
+    z-index: 100;
+    display: none;
+
+}

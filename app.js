@@ -6,8 +6,8 @@ const todoData = [];
 // }
 
 
-function actionToAdd() {
-    let taskInput = document.getElementById('task_input');
+function actionToAdd(id = 'task_input') {
+    let taskInput = document.getElementById(id);
     let taskValue = taskInput.value.trim();
     if (taskValue !== '') {
         todoData.push(taskValue);
@@ -81,14 +81,36 @@ function removeTask(value) {
 }
 
 function editTask(value) {
+    let editBox = document.querySelector('.editBox')
+    editBox.style.display = 'block';
     const indexToEdit = todoData.indexOf(value);
     if (indexToEdit !== -1) {
-        let taskInput = document.getElementById('task_input');
-        taskInput.value = value;
+        console.log("Working")
         todoData.splice(indexToEdit, 1);
+        let taskInput = document.querySelector('.editInput');
+        console.log(value)
+        console.log(taskInput)
+        taskInput.value = value
+    }
+}
+
+function editSave() {
+
+    // todoData.splice(indexToEdit, 1);
+    let editBox = document.querySelector('.editBox')
+    editBox.style.display = 'none';
+    let editInput = document.querySelector('.editInput');
+    let taskValue = editInput.value.trim();
+    if (taskValue !== '') {
+        todoData.push(taskValue);
         list.innerHTML = "";
         todoData.forEach(addData);
+        editInput.value = "";
     }
+    // actionToAdd('editInput')
+    console.log('EDIT Save')
+    // let taskInput = document.getElementById('task_input');
+    // taskInput.value = value;
 }
 
 function clearAllData() {
